@@ -11,7 +11,7 @@ Check out my partner's GitHub profile [here](https://github.com/ryanhampton88)
 
 ### Demo
 
-[fav-movie-app-demo.mp4](video%2Ffav-movie-app-demo.mp4)
+
 
 ### Screenshot
 
