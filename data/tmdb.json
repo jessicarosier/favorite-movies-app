@@ -16,7 +16,7 @@
     },
     {
       "Title": "The Wedding Singer",
-      "Rating": "3",
+      "Rating": "5",
       "ApiId": "11003",
       "Genre": "Romance,Comedy",
       "Overview": "Robbie, a local rock star turned wedding singer, is dumped on the day of his wedding. Meanwhile, waitress Julia finally sets a wedding date with her fiancée Glenn. When Julia and Robbie meet and hit it off, they find that things are more complicated than anybody thought.",
@@ -29,7 +29,7 @@
     },
     {
       "Title": "Halloween II",
-      "Rating": "5",
+      "Rating": "4",
       "ApiId": "24150",
       "Genre": "Horror",
       "Overview": "Laurie Strode struggles to come to terms with her brother Michael's deadly return to Haddonfield, Illinois. Meanwhile, Michael prepares for another reunion with his sister.",
@@ -109,9 +109,9 @@
     },
     {
       "Title": "Batman v Superman: Dawn of Justice",
-      "Rating": "5",
+      "Rating": "4",
       "ApiId": "209112",
-      "Genre": "Action,Adventure,Fantasy",
+      "Genre": "Action,Adventure",
       "Overview": "Fearing the actions of a god-like Super Hero left unchecked, Gotham City’s own formidable, forceful vigilante takes on Metropolis’s most revered, modern-day savior, while the world wrestles with what sort of hero it really needs. And with Batman and Superman at war with one another, a new threat quickly arises, putting mankind in greater danger than it’s ever known before.",
       "Poster": "/5UsK3grJvtQrtzEgqNlDljJW96w.jpg",
       "Year": "2016-03-23",
@@ -119,6 +119,84 @@
       "IMDBid": "tt2975590",
       "Trailer": "9boP0bV1y8s",
       "id": 9
+    },
+    {
+      "Title": "The Little Mermaid",
+      "Rating": "4",
+      "ApiId": "447277",
+      "Genre": "Adventure,Family,Fantasy,Romance",
+      "Overview": "The youngest of King Triton’s daughters, and the most defiant, Ariel longs to find out more about the world beyond the sea, and while visiting the surface, falls for the dashing Prince Eric. With mermaids forbidden to interact with humans, Ariel makes a deal with the evil sea witch, Ursula, which gives her a chance to experience life on land, but ultimately places her life – and her father’s crown – in jeopardy.",
+      "Poster": "/ym1dxyOk4jFcSl4Q2zmRrA5BEEN.jpg",
+      "Year": "2023-05-18",
+      "Runtime": "135",
+      "IMDBid": "tt5971474",
+      "Trailer": "P-S_u-mPGIo",
+      "id": 10
+    },
+    {
+      "Title": "Coco",
+      "Rating": "5",
+      "ApiId": "354912",
+      "Genre": "Family,Animation,Fantasy,Music,Comedy,Adventure",
+      "Overview": "Despite his family’s baffling generations-old ban on music, Miguel dreams of becoming an accomplished musician like his idol, Ernesto de la Cruz. Desperate to prove his talent, Miguel finds himself in the stunning and colorful Land of the Dead following a mysterious chain of events. Along the way, he meets charming trickster Hector, and together, they set off on an extraordinary journey to unlock the real story behind Miguel's family history.",
+      "Poster": "/gGEsBPAijhVUFoiNpgZXqRVWJt2.jpg",
+      "Year": "2017-10-27",
+      "Runtime": "105",
+      "IMDBid": "tt2380307",
+      "Trailer": "rKCUPdZHyyc",
+      "id": 12
+    },
+    {
+      "Title": "The Breakfast Club",
+      "Rating": "5",
+      "ApiId": "2108",
+      "Genre": "Comedy,Drama",
+      "Overview": "Five high school students from different walks of life endure a Saturday detention under a power-hungry principal. The disparate group includes rebel John, princess Claire, outcast Allison, brainy Brian and Andrew, the jock. Each has a chance to tell his or her story, making the others see them a little differently -- and when the day ends, they question whether school will ever be the same.",
+      "Poster": "/9nai8pRm4Ja0O265Qp6UyqXlLQ8.jpg",
+      "Year": "1985-02-15",
+      "Runtime": "98",
+      "IMDBid": "tt0088847",
+      "Trailer": "7xhah55sKJA",
+      "id": 15
+    },
+    {
+      "Title": "American Sniper",
+      "Rating": "5",
+      "ApiId": "190859",
+      "Genre": "War,Action",
+      "Overview": "U.S. Navy SEAL Chris Kyle takes his sole mission—protect his comrades—to heart and becomes one of the most lethal snipers in American history. His pinpoint accuracy not only saves countless lives but also makes him a prime target of insurgents. Despite grave danger and his struggle to be a good husband and father to his family back in the States, Kyle serves four tours of duty in Iraq. However, when he finally returns home, he finds that he cannot leave the war behind.",
+      "Poster": "/i1U46OwMc6vlm7OoSUKfqUH615e.jpg",
+      "Year": "2014-12-25",
+      "Runtime": "133",
+      "IMDBid": "tt2179136",
+      "Trailer": "5bP1f_1o-zo",
+      "id": 16
+    },
+    {
+      "Title": "Encanto",
+      "Rating": "5",
+      "ApiId": "568124",
+      "Genre": "Animation,Comedy,Family,Fantasy",
+      "Overview": "The tale of an extraordinary family, the Madrigals, who live hidden in the mountains of Colombia, in a magical house, in a vibrant town, in a wondrous, charmed place called an Encanto. The magic of the Encanto has blessed every child in the family—every child except one, Mirabel. But when she discovers that the magic surrounding the Encanto is in danger, Mirabel decides that she, the only ordinary Madrigal, might just be her exceptional family's last hope.",
+      "Poster": "/4j0PNHkMr5ax3IA8tjtxcmPU3QT.jpg",
+      "Year": "2021-10-13",
+      "Runtime": "102",
+      "IMDBid": "tt2953050",
+      "Trailer": "0Rmiq2PPQDg",
+      "id": 17
+    },
+    {
+      "Title": "Saw X",
+      "Rating": "5",
+      "ApiId": "951491",
+      "Genre": "Crime,Horror,Thriller",
+      "Overview": "Between the events of 'Saw' and 'Saw II', a sick and desperate John Kramer travels to Mexico for a risky and experimental medical procedure in hopes of a miracle cure for his cancer, only to discover the entire operation is a scam to defraud the most vulnerable. Armed with a newfound purpose, the infamous serial killer returns to his work, turning the tables on the con artists in his signature visceral way through devious, deranged, and ingenious traps.",
+      "Poster": "/aQPeznSu7XDTrrdCtT5eLiu52Yu.jpg",
+      "Year": "2023-09-26",
+      "Runtime": "118",
+      "IMDBid": "tt21807222",
+      "Trailer": "UqcGdmJJVTY",
+      "id": 19
     }
   ]
 }

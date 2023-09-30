@@ -1,13 +1,6 @@
-import {
-    TMDB_KEY, TMDB_TOKEN
-} from "./keys.js";
-import {strToStandardCase} from "./js-utils.js";
+import {TMDB_TOKEN} from "./keys.js";
 
-
-const addMovieButton = document.getElementById("add-movie-button");
 const movieSearchInput = document.getElementById("movie-search");
-const userTitleInput = document.getElementById("user-title");
-const userRatingInput = document.getElementById("user-rating");
 const movieDisplay = document.getElementById("display-movies");
 const displayActionGenre = document.getElementById("display-action");
 const displayAdventureGenre = document.getElementById("display-adventure");
@@ -36,6 +29,7 @@ const onPageLoad = async () => {
     });
 };
 
+//gets the movies from the API based on title
 const getTmdbMovies = async (title) => {
     let url = `https://api.themoviedb.org/3/search/movie?query=${title}&include_adult=false&language=en-US`;
     const options = {
@@ -51,6 +45,7 @@ const getTmdbMovies = async (title) => {
     return movies;
 };
 
+//gets the movie details from the API based on the movie ID
 const getTmdbMovieDetails = async (id) => {
     let url = `https://api.themoviedb.org/3/movie/${id}`;
     const options = {
@@ -67,6 +62,7 @@ const getTmdbMovieDetails = async (id) => {
 
 };
 
+//gets the movie trailers from the API based on the movie ID
 const getTmdbMovieTrailers = async (id) => {
     let url = `
 https://api.themoviedb.org/3/movie/${id}/videos`;
@@ -82,8 +78,9 @@ https://api.themoviedb.org/3/movie/${id}/videos`;
     return movieTrailers;
 };
 
+//gets the movie cast from the API based on the movie ID
 const getTmdbMovieCast = async (id) => {
-    let url= `https://api.themoviedb.org/3/movie/${id}/credits`;
+    let url = `https://api.themoviedb.org/3/movie/${id}/credits`;
     const options = {
         method: "GET",
         headers: {
@@ -94,15 +91,12 @@ const getTmdbMovieCast = async (id) => {
     let response = await fetch(url, options);
     let movieCast = await response.json();
     return movieCast;
-}
+};
 
+//gets the movie details from the API based, renders the movie details in a modal when the movie card is clicked
 const renderAddMovieModal = (movie) => {
     const addMovieModalForm = document.createElement("div");
     addMovieModalForm.classList.add("modal");
-
-
-
-
     addMovieModalForm.innerHTML = `<div class="modal-bg"></div>
         <div class="modal-content" style="background-color: white;">
             <div class="modal-header">
@@ -110,7 +104,6 @@ const renderAddMovieModal = (movie) => {
                 <span class="modal-close">&times;</span>
             </div>
             <div class="carousel-card card-animation" style="background-image: url('https://image.tmdb.org/t/p/w500/${movie.poster_path}'); height: 500px">
-           
                  </div> 
                  <div class="card-details">
                   <p class="text-black">${movie.overview}</p>
@@ -138,7 +131,6 @@ const renderAddMovieModal = (movie) => {
     const modalBackground = addMovieModalForm.querySelector(".modal-bg");
     const modalFormSave = addMovieModalForm.querySelector("[data-action='save']");
 
-    console.log("got here");
 
     // event listener for close button
     modalClose.addEventListener("click", () => {
@@ -177,7 +169,7 @@ const renderAddMovieModal = (movie) => {
             trailorKey = movieTrailers.results[0].key;
         }
 
-
+        //creates the new movie object to be posted to the local DB
         newMovie = {
             "Title": `${movie.title}`,
             "Rating": `${userRating}`,
@@ -190,13 +182,15 @@ const renderAddMovieModal = (movie) => {
             "IMDBid": `${movieDetails.imdb_id}`,
             "Trailer": `${trailorKey}`
         };
+
         await postMovie(newMovie);
+        //removes the modal from the DOM after the movie is added to the DB
         document.body.removeChild(addMovieModalForm);
     });
 
-
+    // appends the modal to the DOM
     document.body.appendChild(addMovieModalForm);
-}
+};
 
 
 const movieSearchByInput = () => {
@@ -208,41 +202,42 @@ const movieSearchByInput = () => {
         let movies = await getTmdbMovies(userInput);
         const searchMatchList = document.querySelector(".list");
 
+        //loops through the movies array from the API, if the user input matches the beginning of the movie title, displays the movie title in a list item
         for (let i = 0; i < movies.results.length; i++) {
-
-            if (movieSearchByInput === "") {
-                searchMatchList.innerHTML = "";
-            }
-
             if (movies.results[i].title.toLowerCase().startsWith(userInput.toLowerCase()) && userInput.value !== "") {
+
                 //creates a list item that holds the matched movie title from the API array
                 let listItem = document.createElement("li");
                 listItem.classList.add("list-item");
                 listItem.style.cursor = "pointer";
+
                 //Displays the matched part of the movie title in bold
                 let word = `${movies.results[i].title.substring(0, movieSearchInput.value.length)} <img src="https://image.tmdb.org/t/p/w500/${movies.results[i].poster_path}"> `;
+
+                //Displays the rest of the movie title after the matched part in normal font
                 word += movies.results[i].title.substring(movieSearchInput.value.length);
 
+                //appends the list item to the list
                 listItem.innerHTML = word;
                 searchMatchList.prepend(listItem);
 
                 //event listener for the list item that holds the matched movie title
                 listItem.addEventListener("click", async (e) => {
                     e.preventDefault();
+                    //renders the modal for the user to add the movie to the local DB
                     renderAddMovieModal(movies.results[i]);
+                    //clears the list of matched movie titles
                     document.querySelector(".list").innerHTML = "";
+                    //clears the search input field
                     movieSearchInput.value = "";
-                    console.log(movies.results[i].title);
                 });
 
-
+                //TODO: remove the list item from the list if the user input does not match the beginning of the movie title
+            } else if (userInput.value === "") {
+                searchMatchList.innerHTML = "";
             }
-
         }
-
-
     });
-
 };
 
 //removes anything that is being displayed in the move-display div
@@ -255,9 +250,7 @@ const clearBigMovieDisplay = () => {
     bigMovieDisplay.innerHTML = "";
 };
 
-
-
-
+//returns all movies from our local DB
 const getlocalMovieDb = async () => {
     const url = `http://localhost:3000/movies`;
     const options = {
@@ -287,7 +280,7 @@ const getLocalMovie = async () => {
 };
 
 
-///////checks to see if movie already exists in DB before posting it to DB///////////
+//checks the local DB to see if the movie already exists in the DB
 const searchMovieByTitle = async (title) => {
     const url = `http://localhost:3000/movies?Title=${title}`;
     const options = {
@@ -301,7 +294,7 @@ const searchMovieByTitle = async (title) => {
     return movie;
 };
 
-////////////////takes in a Movie object as an argument, then posts the object to the local DB, then renders in on screen////////////
+//takes a movie object as an argument, posts the movie object to the local DB
 const postMovie = async (movie) => {
     try {
         //validates movie isn't already in the database
@@ -311,20 +304,20 @@ const postMovie = async (movie) => {
             // throw error
             throw new Error("Movie already exists in the database");
         }
-    const url = `http://localhost:3000/movies`;
-    const body = movie;
-    const options = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-    };
-    const response = await fetch(url, options);
-    const newId = await response.json();
-    renderMovie(newId);
-    displayBigMovie(newId);
-    return newId;
+        const url = `http://localhost:3000/movies`;
+        const body = movie;
+        const options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body),
+        };
+        const response = await fetch(url, options);
+        const newId = await response.json();
+        renderMovie(newId);
+        displayBigMovie(newId);
+        return newId;
     } catch (error) {
         console.log(error);
         return null;
@@ -332,7 +325,7 @@ const postMovie = async (movie) => {
 };
 
 
-//updates movie object properties in the local DB after user submits an edit
+//updates the movie object in the local DB when the user edits the movie
 const patchMovie = async (movie) => {
     try {
         const url = `http://localhost:3000/movies/${movie.id}`;
@@ -356,7 +349,7 @@ const patchMovie = async (movie) => {
 };
 
 
-//renders the edit or save
+//renders the modal for the user to edit the movie or delete the movie
 const renderModal = (movie, action) => {
     const modal = document.createElement("div");
     let existingGenres = movie.Genre;
@@ -373,14 +366,18 @@ const renderModal = (movie, action) => {
             </div>
             <div class="modal-body">
                 <form class="modal-form d-flex flex-column align-items-center" id="movie-form">
-                <div class="d-flex flex-column gap-2 mb-2" style="color: black;">
+               <div class="d-flex flex-wrap gap-2 mb-2 text-black">
                     <label for="Ratings">
-                        Rating
+                        Rating:
                         <input required type="number" name="Ratings" id="Ratings" min="0" max="5" value="${movie.Rating}" />
                     </label>
+                    </div>
                     <label for="id">
                         <input hidden required type="number" name="id" id="id" value="${movie.id}" />
                     </label>
+                    <div class="text-black">Genres:</div>
+                    <div class="d-flex flex-wrap gap-2 mb-2" style="color: black;">
+                    
                     <label><input type="checkbox" name="genres" value="Action">Action </label>
                     <label><input type="checkbox" name="genres" value="Adventure">Adventure</label>
                     <label><input type="checkbox" name="genres" value="Animation">Animation</label>
@@ -407,14 +404,13 @@ const renderModal = (movie, action) => {
         </div>
     `;
 
-    //checks the checkboxes for the genres that the movie already has
+    //checks the genres that are already associated with the movie then checks the checkboxes for those genres
     let checkboxes = modal.querySelectorAll("input[type='checkbox']");
     checkboxes.forEach((checkbox) => {
         if (splitGenres.includes(checkbox.value)) {
             checkbox.checked = true;
         }
     });
-
 
     //nodes from the modal for event listeners
     const modalForm = modal.querySelector("#movie-form");
@@ -423,7 +419,6 @@ const renderModal = (movie, action) => {
     const modalFormCancel = modal.querySelector("[data-action='cancel']");
     const modalFormSave = modal.querySelector("[data-action='save']");
 
-    console.log("got here");
 
     // event listener for close button
     modalClose.addEventListener("click", () => {
@@ -463,6 +458,7 @@ const renderModal = (movie, action) => {
 
         let newGenres = (splitGenres.join(","));
 
+        //creates the updated movie object to be posted to the local DB with the updated movie properties
         let updatedMovieObj = {
             id: `${movieId}`,
             Rating: `${newRating}`,
@@ -491,7 +487,7 @@ const renderMovie = (movie) => {
     let ratingHtml = ``;
 
 
-//determines how many stars should be included in movie card html based on the rating stored in the movie object
+//determines how many stars to display based on the movie rating
     if (Number(movie.Rating) < 2) {
         ratingHtml = `<a  href="#" class="star-icon">&#9733;</a>`;
     } else if (Number(movie.Rating) < 3) {
@@ -534,7 +530,6 @@ const renderMovie = (movie) => {
                   </div>
            
     `;
-
 
     //event listener, displays Big Movie details for the movie card that is clicked
     movieCard.addEventListener("click", () => {
@@ -593,9 +588,43 @@ let displayBigMovie = async (movie) => {
 
     const movieTrailorBtn = bigMovieDisplay.querySelector(".btn-outline-danger");
     movieTrailorBtn.addEventListener("click", async (e) => {
-        console.log("Clicked tailor button")
+        console.log("Clicked tailor button");
+
+        const modal = document.createElement("div");
+        let existingGenres = movie.Genre;
+        let splitGenres = existingGenres.split(",");
+        console.log(splitGenres);
+        modal.classList.add("modal");
+
+        modal.innerHTML = `
+        <div class="modal-bg"></div>
+        <div class="modal-content" style="background-color: white;">
+            <div class="modal-header">
+                <h2 class="modal-title" style="color: red; font-family: Bebas Neue;">${movie.Title}</h2>
+                <span class="modal-close text-black">&times;</span>
+            </div>
+            <div class="modal-body">
+             <iframe width="560" height="315" src="https://www.youtube.com/embed/${movie.Trailer}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>  
+            </div>
+        </div>
+    `;
+        const modalClose = modal.querySelector(".modal-close");
+        const modalBackground = modal.querySelector(".modal-bg");
+
+
+        // event listener for close button
+        modalClose.addEventListener("click", () => {
+            modal.remove();
+        });
+
+        //event listener for modal background, allows user to click anywhere on background to close modal
+        modalBackground.addEventListener("click", () => {
+            modal.remove();
+        });
+        document.body.appendChild(modal);
+
     });
-    }
+};
 
 
 //deletes a movie object from the local JSON DB
