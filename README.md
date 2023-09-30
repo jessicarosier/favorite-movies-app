@@ -10,7 +10,11 @@ This was a pair programming development project completed in 1 week.
 Check out my partner's GitHub profile [here](https://github.com/ryanhampton88)
 
 ### Demo
-https://github.com/jessicarosier/favorite-movies-app/blob/main/video/fav-movie-app-demo.mp4
+
+
+https://github.com/jessicarosier/favorite-movies-app/assets/140553655/8251ae47-2259-4118-99a5-2a700eac1e9e
+
+
 
 
 ### Screenshot
