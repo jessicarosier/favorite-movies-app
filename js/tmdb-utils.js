@@ -194,7 +194,7 @@ const renderAddMovieModal = (movie) => {
 
 
 const movieSearchByInput = () => {
-    movieSearchInput.addEventListener("keyup", async (e) => {
+    movieSearchInput.addEventListener("input", async (e) => {
         e.preventDefault();
 
         let userInput = movieSearchInput.value;
@@ -202,8 +202,15 @@ const movieSearchByInput = () => {
         let movies = await getTmdbMovies(userInput);
         const searchMatchList = document.querySelector(".list");
 
+        //if the user input is not empty, displays the list of matched movie titles, otherwise hides the list
+        if (movieSearchInput.value.length > 0) {
+            searchMatchList.classList.remove("invisible");
+        } else if (movieSearchInput.value.length == 0) {
+            searchMatchList.classList.add("invisible");
+        }
         //loops through the movies array from the API, if the user input matches the beginning of the movie title, displays the movie title in a list item
         for (let i = 0; i < movies.results.length; i++) {
+
             if (movies.results[i].title.toLowerCase().startsWith(userInput.toLowerCase()) && userInput.value !== "") {
 
                 //creates a list item that holds the matched movie title from the API array
@@ -212,14 +219,15 @@ const movieSearchByInput = () => {
                 listItem.style.cursor = "pointer";
 
                 //Displays the matched part of the movie title in bold
-                let word = `${movies.results[i].title.substring(0, movieSearchInput.value.length)} <img src="https://image.tmdb.org/t/p/w500/${movies.results[i].poster_path}"> `;
+                let matchedTitle = `<strong>${movies.results[i].title.substring(0, movieSearchInput.value.length)}</strong> <img src="https://image.tmdb.org/t/p/w500/${movies.results[i].poster_path}"> `;
 
                 //Displays the rest of the movie title after the matched part in normal font
-                word += movies.results[i].title.substring(movieSearchInput.value.length);
+                matchedTitle += movies.results[i].title.substring(movieSearchInput.value.length);
 
                 //appends the list item to the list
-                listItem.innerHTML = word;
+                listItem.innerHTML = matchedTitle;
                 searchMatchList.prepend(listItem);
+
 
                 //event listener for the list item that holds the matched movie title
                 listItem.addEventListener("click", async (e) => {
@@ -232,10 +240,10 @@ const movieSearchByInput = () => {
                     movieSearchInput.value = "";
                 });
 
+
                 //TODO: remove the list item from the list if the user input does not match the beginning of the movie title
-            } else if (userInput.value === "") {
-                searchMatchList.innerHTML = "";
             }
+
         }
     });
 };

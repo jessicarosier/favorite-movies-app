@@ -197,6 +197,19 @@
       "IMDBid": "tt0993846",
       "Trailer": "g07Xxr20L9s",
       "id": 20
+    },
+    {
+      "Title": "Cats",
+      "Rating": "5",
+      "ApiId": "513386",
+      "Genre": "Animation,Family",
+      "Overview": "A cat named Blanket has long been living in a high-rise apartment in the city with his son, Cloak. One day, curious about the outside world, Cloak decides to leave home and embarks on an adventure to find the legendary cat's paradise. To find his son, Blanket must overcome his fear and reconcile with his past, with the help of a female Macaw.",
+      "Poster": "/lsZheNTApIa1nrgBWzw90gXdy3Y.jpg",
+      "Year": "2018-04-05",
+      "Runtime": "105",
+      "IMDBid": "tt7886614",
+      "Trailer": "41Xw_Q38-Eo",
+      "id": 21
     }
   ]
 }
