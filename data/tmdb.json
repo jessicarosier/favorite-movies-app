@@ -199,17 +199,43 @@
       "id": 20
     },
     {
-      "Title": "Cats",
+      "Title": "Wonder Woman 1984",
       "Rating": "5",
-      "ApiId": "513386",
-      "Genre": "Animation,Family",
-      "Overview": "A cat named Blanket has long been living in a high-rise apartment in the city with his son, Cloak. One day, curious about the outside world, Cloak decides to leave home and embarks on an adventure to find the legendary cat's paradise. To find his son, Blanket must overcome his fear and reconcile with his past, with the help of a female Macaw.",
-      "Poster": "/lsZheNTApIa1nrgBWzw90gXdy3Y.jpg",
-      "Year": "2018-04-05",
-      "Runtime": "105",
-      "IMDBid": "tt7886614",
-      "Trailer": "41Xw_Q38-Eo",
-      "id": 21
+      "ApiId": "464052",
+      "Genre": "Action,Adventure,Fantasy",
+      "Overview": "A botched store robbery places Wonder Woman in a global battle against a powerful and mysterious ancient force that puts her powers in jeopardy.",
+      "Poster": "/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg",
+      "Year": "2020-12-16",
+      "Runtime": "151",
+      "IMDBid": "tt7126948",
+      "Trailer": "oM94pkVf8hw",
+      "id": 22
+    },
+    {
+      "Title": "The Meg",
+      "Rating": "3",
+      "ApiId": "345940",
+      "Genre": "Action,Science Fiction,Horror",
+      "Overview": "A deep sea submersible pilot revisits his past fears in the Mariana Trench, and accidentally unleashes the seventy foot ancestor of the Great White Shark believed to be extinct.",
+      "Poster": "/eyWICPcxOuTcDDDbTMOZawoOn8d.jpg",
+      "Year": "2018-08-09",
+      "Runtime": "113",
+      "IMDBid": "tt4779682",
+      "Trailer": "Qs1Y7-nY8WM",
+      "id": 23
+    },
+    {
+      "Title": "The Emperor's New Groove",
+      "Rating": "2",
+      "ApiId": "11688",
+      "Genre": "Adventure,Animation,Comedy,Family,Fantasy",
+      "Overview": "Kuzco is a self-centered emperor who summons Pacha from a village and to tell him that his home will be destroyed to make room for Kuzco's new summer home. Kuzco's advisor, Yzma, tries to poison Kuzco and accidentally turns him into a llama, who accidentally ends up in Pacha's village. Pacha offers to help Kuzco if he doesn't destroy his house, and so they form an unlikely partnership.",
+      "Poster": "/wwbgkXQBEKtnyIJapk6gUgWkVw8.jpg",
+      "Year": "2000-12-15",
+      "Runtime": "78",
+      "IMDBid": "tt0120917",
+      "Trailer": "8EvdVvY_FEs",
+      "id": 24
     }
   ]
 }

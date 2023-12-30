@@ -208,10 +208,11 @@ const movieSearchByInput = () => {
         } else if (movieSearchInput.value.length == 0) {
             searchMatchList.classList.add("invisible");
         }
+
         //loops through the movies array from the API, if the user input matches the beginning of the movie title, displays the movie title in a list item
         for (let i = 0; i < movies.results.length; i++) {
 
-            if (movies.results[i].title.toLowerCase().startsWith(userInput.toLowerCase()) && userInput.value !== "") {
+            if (movies.results[i].title.toLowerCase().startsWith(userInput.toLowerCase())) {
 
                 //creates a list item that holds the matched movie title from the API array
                 let listItem = document.createElement("li");
@@ -221,7 +222,7 @@ const movieSearchByInput = () => {
                 //Displays the matched part of the movie title in bold
                 let matchedTitle = `<strong>${movies.results[i].title.substring(0, movieSearchInput.value.length)}</strong> <img src="https://image.tmdb.org/t/p/w500/${movies.results[i].poster_path}"> `;
 
-                //Displays the rest of the movie title after the matched part in normal font
+                // //Displays the rest of the movie title after the matched part in normal font
                 matchedTitle += movies.results[i].title.substring(movieSearchInput.value.length);
 
                 //appends the list item to the list
@@ -324,7 +325,7 @@ const postMovie = async (movie) => {
         const response = await fetch(url, options);
         const newId = await response.json();
         renderMovie(newId);
-        displayBigMovie(newId);
+        await displayBigMovie(newId);
         return newId;
     } catch (error) {
         console.log(error);
